@@ -11,8 +11,18 @@ let charRace;
 let charbackground;
 let charAligment;
 switch (characterClass) {
+
+    //PARA JOACO
+    // tuve que agregar dentro de los CharacterClass y los CharacterRace todo lo que habia hecho en los archivos correspondientes pra que quede 
+    //funcional.. pero la idea no seria tenerlo aca.
+    //lo habia puesto como charClass= new CharacterClass(...human) y asi con todas las razas y clases , pero me tiraba error y no me hacia los 
+    //calculos.
+    //no se si vos sabras el por que pasa eso.
+    
+
+
     case 1:
-         charClass= new CharacterClass 12, 1, [
+         charClass= new CharacterClass( 12, 1, [
                 "Armaduras Ligeras",
                 "Armaduras Medias",
                 "Escudos",
@@ -33,7 +43,7 @@ switch (characterClass) {
             ]);
         break;
     case 2:
-         charClass= new CharacterClass( 6, 1,[
+         charClass= new CharacterClass(6, 1,[
                 "Dagas",
                 "Dardos",
                 "Hondas",
@@ -56,9 +66,7 @@ switch (characterClass) {
             ]);
         break;
     case 3:
-         charClass= new CharacterClass(: 8,
-            : 1,
-            : [
+         charClass= new CharacterClass( 8,1, [
                 "Armaduras Ligeras",
                 "Ballestas de mano",
                 "Espadas cortas",
@@ -66,18 +74,14 @@ switch (characterClass) {
                 "Espadas Largas",
                 "Estoques",
                 "Herramientas de ladron"
-            ],
-            : 2,
-            :[
+            ], 2,[
                 "Dex",
                 "Int"
-            ],
-            :[
+            ],[
                 {
                     sneakAttackDamage: "1d6"
                 }
-            ],
-            : [
+            ],[
                 ["Estoque","Espada Corta"],
                 ["Arco Corto y 20 flechas", "Espada corta"],
                 ["Un paquete de Ladron", "Paquete de explorador", "Paquete de explorador de mazmorras"],
@@ -87,13 +91,14 @@ switch (characterClass) {
 }
 switch (characterRace) {
     case 1:
-        charRace= new CharacterRace(...human);
+        charRace= new CharacterRace( 1, 1,1,1, 1,1,"Mediano",30,[],[],["Comun","Uno a eleccion"]);
         break;
     case 2:
-        charRace= new CharacterRace(...elve);
+        charRace= new CharacterRace(  0,2,0, 0, 0, 0,"Mediano",30,["Vision en la oscuridad", "Sentidos Agudos","linaje Feerico","Trance"],[],["Comun","Elfo"]);
         break;
     case 3:
-        charRace= new CharacterRace(...dwarf);
+        charRace= new CharacterRace(0,0,2,0,0,0,"Medianop",25,["Vision en la oscuridad","Resistencia enena","Enterenamiento de combate enano", "Afinidad con la piedra", "Competencias con herramientas"],
+        [],["Comun","Enano"]);
         break;
 }
 switch (background) {
@@ -121,28 +126,3 @@ switch (alignment) {
 const inventario= new Inventory();
 const MiPersonaje= new HojaPj(playerName, characterName,charClass,charRace,charbackground,charAligment,attribute[0],attribute[1],attribute[2],attribute[3],attribute[4],attribute[5],inventario)
 console.log(MiPersonaje);
-// let picaro = new CharacterClass( 8,1,[
-//         "Armaduras Ligeras",
-//         "Ballestas de mano",
-//         "Espadas cortas",
-//         "Armas Sencillas",
-//         "Espadas Largas",
-//         "Estoques",
-//         "Herramientas de ladron"
-//     ],2,[
-//         "Dex",
-//         "Int"
-//     ],[
-//         {
-//             sneakAttackDamage: "1d6"
-//         }
-//     ],[
-//         ["Estoque","Espada Corta"],
-//         ["Arco Corto y 20 flechas", "Espada corta"],
-//         ["Un paquete de Ladron", "Paquete de explorador", "Paquete de explorador de mazmorras"],
-//         ["Armadura de cuero, dos dagas y herramientas de ladron"]
-//     ]);
-// let elfo = new CharacterRace( 0, 2, 0, 0, 0, 0, "Mediano", 30,["Vision en la oscuridad", "Sentidos Agudos","linaje Feerico","Trance"],[],["Comun","Elfo"]);
-// let inventario= new Inventory();
-// const MiPersonaje= new HojaPj("facu", "garret",picaro,elfo,"criminal","neutral",8,16,14,12,10,14,inventario);
-// console.log(MiPersonaje);
