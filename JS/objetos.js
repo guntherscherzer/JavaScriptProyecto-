@@ -1,30 +1,40 @@
 class HojaPj{
     constructor(playerName, characterName,characterClass,characterRace,background,alignment,str,dex,con,int,wis,cha,inventory){
-        this.playerName=playerName;
-        this.characterName=characterName;
-        this.characterClass= characterClass;
-        this.characterRace= characterRace;
-        this.background=background;
-        this.alignment=alignment;
+        this.playerName=playerName || "";
+        this.characterName=characterName || "";
+        this.characterClass= characterClass || new CharacterClass();
+        this.characterRace= characterRace || "";
+        this.background=background || "";
+        this.alignment=alignment || "";
         this.exp=0;
-        this.str=str;
+        this.str=str || 0;
         this.strMod=Math.floor((this.str-10)/2);
-        this.dex=dex;
+        this.dex=dex || 0;
         this.dexMod=Math.floor((this.dex-10)/2);
-        this.con=con;
+        this.con=con || 0;
         this.conMod=Math.floor((this.con-10)/2);
-        this.int=int;
-        this.wis=wis;
+        this.int=int || 0;
+        this.intMod=Math.floor((this.con-10)/2);
+        this.wis=wis || 0;
         this.wisMod=Math.floor((this.wis-10)/2);
-        this.cha=cha;
+        this.cha=cha || 0;
         this.chaMod=Math.floor((this.cha-10)/2);
         this.successes=0;
         this.failures=0;
-        this.inventory= inventory;
+        this.inventory= inventory || new Inventory();
 
         this.characterClass.calcHP(true,0,this.conMod);
     }
     
+    calcMod(){
+        this.strMod=Math.floor((this.str-10)/2);
+        this.dexMod=Math.floor((this.dex-10)/2);
+        this.conMod=Math.floor((this.con-10)/2);
+        this.intMod=Math.floor((this.con-10)/2);
+        this.wisMod=Math.floor((this.wis-10)/2);
+        this.chaMod=Math.floor((this.cha-10)/2);
+    }
+
     calSuccFail(diceRoll){
         if (diceRoll<=10) {
             this.failures++;
@@ -48,19 +58,20 @@ class HojaPj{
 
 
 class CharacterRace{
-    constructor(str,dex,con,int,wis,cha,size,speed,features,proficiencies,langueges,subrace){
-        this.str=str;
-        this.dex=dex;
-        this.con=con;
-        this.int=int;
-        this.wis=wis;
-        this.cha=cha;
-        this.size=size;
-        this.speed=speed;
+    constructor(raceName,str,dex,con,int,wis,cha,size,speed,features,proficiencies,langueges,subrace){
+        this.raceName=raceName|| "";
+        this.str=str || 0;
+        this.dex=dex || 0;
+        this.con=con || 0;
+        this.int=int || 0;
+        this.wis=wis || 0;
+        this.cha=cha || 0;
+        this.size=size || "";
+        this.speed=speed || 0;
         this.features=features || [];
         this.proficiencies=proficiencies || [];
         this.langueges=langueges || [];
-        this.subrace=subrace;
+        this.subrace=subrace || "";
     }
 
     addFeature(feature){
@@ -76,12 +87,13 @@ class CharacterRace{
  
 
 class CharacterClass{
-    constructor(hitDice,lvl,proficiencies,proficiencieBonus,savingThrows,features,equipment){
-        this.hitDice=hitDice;
-        this.hitPoints;
-        this.lvl=lvl;
+    constructor(className,hitDice,lvl,proficiencies,proficiencieBonus,savingThrows,features,equipment){
+        this.className=className || "";
+        this.hitDice=hitDice || 0;
+        this.hitPoints || 0;
+        this.lvl=lvl || 1;
         this.proficiencies=proficiencies || [];
-        this.proficiencieBonus=proficiencieBonus;
+        this.proficiencieBonus=proficiencieBonus || 2;
         this.savingThrows=savingThrows || [];
         this.features=features || [];
         this.equipment=equipment || [];
@@ -92,7 +104,7 @@ class CharacterClass{
            hitDice=Math.ceil((hitDice)/2) 
         }
         if(this.lvl==1){
-            console.log(this.hitDice,con);
+            
             this.hitPoints=this.hitDice+con;
         }else {
             this.hitPoints+=hitDice+con;

@@ -1,17 +1,7 @@
-let human={
-    str: 1,
-    dex: 1,
-    con: 1,
-    int: 1,
-    wis: 1,
-    cha: 1,
-    size: "Mediano",
-    speed:30,
-    features:[],
-    proficiencies:[],
-    languege:["Comun","Uno a eleccion"]
+let human= new CharacterRace(1, 1, 1, 1, 1, 1, "Mediano", 30, [], [],
+    ["Comun","Uno a eleccion"]
     
-}
+)
 let elve={
     str: 0,
     dex: 2,
