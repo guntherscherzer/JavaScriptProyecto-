@@ -3,7 +3,7 @@ class HojaPj{
         this.playerName=playerName || "";
         this.characterName=characterName || "";
         this.characterClass= characterClass || new CharacterClass();
-        this.characterRace= characterRace || "";
+        this.characterRace= characterRace || new CharacterRace();
         this.background=background || "";
         this.alignment=alignment || "";
         this.exp=0;

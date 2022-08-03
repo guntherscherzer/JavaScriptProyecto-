@@ -15,14 +15,26 @@ let conMod = document.getElementById("conMod");
 let intMod = document.getElementById("intMod");
 let wisMod = document.getElementById("wisMod");
 let chaMod = document.getElementById("chaMod");
+let speed = document.getElementById("speed");
+let size = document.getElementById("size");
 
 characterRace.addEventListener("change",(e)=>{
-    if (myPj.characterRace==HojaPj.characterRace) {
-        myPj.size=HojaPj.characterRace.size
+    let selectedRace;
+    switch (characterRace.value) {
+        case "Human": 
+            selectedRace=human;
+            break;
+        case "Elve": 
+            selectedRace=elve;
+            break;
+        case "Dwarf": 
+            selectedRace=dwarf;
+            break;
     }
-    my
+    myPj.characterRace=selectedRace;
+    size.value=myPj.characterRace.size;
+    speed.value=myPj.characterRace.speed;
     
-    console.log(e);
 })
 strScore.addEventListener("keyup",(e)=>{
     myPj.str=strScore.value;
