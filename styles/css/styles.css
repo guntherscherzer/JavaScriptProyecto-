@@ -1,0 +1,40 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-image: url("../../img/backgraund.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.playerName {
+  border-radius: 30%;
+  font-size: 1.5rem;
+  width: auto;
+  height: auto;
+}
+
+#characterName {
+  font-size: 1.7rem;
+}
+
+.playerlabel {
+  display: block;
+}
+
+.modifiers {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  left: 20%;
+  border: 2px;
+  border-style: ridge;
+  border-color: black;
+  margin-top: 15%;
+  font-size: 2rem;
+  width: 40%;
+  height: 40%;
+}

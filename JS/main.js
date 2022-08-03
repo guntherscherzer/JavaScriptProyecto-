@@ -16,45 +16,42 @@ let intMod = document.getElementById("intMod");
 let wisMod = document.getElementById("wisMod");
 let chaMod = document.getElementById("chaMod");
 
-strScore.addEventListener("keypress",(e)=>{
-    if (e.keyCode==13) {
-        myPj.str=strScore.value;
-        myPj.calcMod();
-        strMod.innerText=myPj.strMod;
+characterRace.addEventListener("change",(e)=>{
+    if (myPj.characterRace==HojaPj.characterRace) {
+        myPj.size=HojaPj.characterRace.size
     }
+    my
+    
+    console.log(e);
 })
-dexScore.addEventListener("keypress",(e)=>{
-    if (e.keyCode==13) {
-        myPj.dex=dexScore.value;
-        myPj.calcMod();
-        dexMod.innerText=myPj.dexMod;
-    }
+strScore.addEventListener("keyup",(e)=>{
+    myPj.str=strScore.value;
+    myPj.calcMod();
+    strMod.innerText=myPj.strMod;
 })
-conScore.addEventListener("keypress",(e)=>{
-    if (e.keyCode==13) {
-        myPj.con=conScore.value;
-        myPj.calcMod();
-        conMod.innerText=myPj.conMod;
-    }
+dexScore.addEventListener("keyup",(e)=>{
+    myPj.dex=dexScore.value;
+    myPj.calcMod();
+    dexMod.innerText=myPj.dexMod;
 })
-wisScore.addEventListener("keypress",(e)=>{
-    if (e.keyCode==13) {
-        myPj.wis=wisScore.value;
-        myPj.calcMod();
-        wisMod.innerText=myPj.wisMod;
-    }
+conScore.addEventListener("keyup",(e)=>{
+    myPj.con=conScore.value;
+    myPj.calcMod();
+    conMod.innerText=myPj.conMod;
+    
 })
-intScore.addEventListener("keypress",(e)=>{
-    if (e.keyCode==13) {
-        myPj.int=IntScore.value;
-        myPj.calcMod();
-        intMod.innerText=myPj.intMod;
-    }
+wisScore.addEventListener("keyup",(e)=>{
+    myPj.wis=wisScore.value;
+    myPj.calcMod();
+    wisMod.innerText=myPj.wisMod;
 })
-chaScore.addEventListener("keypress",(e)=>{
-    if (e.keyCode==13) {
-        myPj.cha=chaScore.value;
-        myPj.calcMod();
-        chaMod.innerText=myPj.chaMod;
-    }
+intScore.addEventListener("keyup",(e)=>{
+    myPj.int=IntScore.value;
+    myPj.calcMod();
+    intMod.innerText=myPj.intMod;
+})
+chaScore.addEventListener("keyup",(e)=>{
+    myPj.cha=chaScore.value;
+    myPj.calcMod();
+    chaMod.innerText=myPj.chaMod;
 })

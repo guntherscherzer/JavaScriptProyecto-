@@ -5,100 +5,127 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="widdiv=device-widdiv, initial-scale=1.0">
     <title>Document</title>
- 
-    <link href="https://getbootsdivap.com/docs/4.3/dist/css/bootsdivap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="styles/css/styles.css">
 </head>
-<body>
-    <div class="container">
-        
-        <div class="row" >
-        
-            <div class="">
+<body>    
+    <div class=" ">
+    
+        <div class="m-5 d-flex fs-1 justify-content-center text-decoration-underline">Hoja de Personaje</div>
+    
+        <table class="">  
+        <div class="d-flex justify-content-center mb-5 playerName">
+            <input type="text" placeholder="Player Name" id="playerName">
+        </div >             
+        <div class="d-flex">
+            <input type="text" placeholder="Character Name" id="characterName">
+            <span>
+                <label class="playerlabel">Player Level</label> 
+                <input type="number" id="playerLevel" min="1" max="20" value="1" onchange="playerLevelChange();">
+            </span>
+            <span>
+                <label class="raceTitle">Character Race</label>
+                <select class="form-select raceSelect" aria-label="Default select example" id="characterRace" >
+                    <option value="" disabled selected>Select your option</option>
+                    <option value="Human">Humano</option>
+                    <option value="elve">Elfo</option>
+                    <option value="Dwarf">Enano</option>	
+                </select>   
+            </span>
+            <span>
+                <label>Character Class</label>
+                <select class="form-select" aria-label="Default select example" id="characterClass">
+                    <option value="" disabled selected>Select your option</option>
+                    <option value="Picaro">Picaro</option>
+                    <option value="Barbaro">Barbaro</option>
+                    <option value="Mago">Mago</option>	
+                </select>
+    
+            </span>
             
-            <table class="table">
-                <div>
-                    <h2>Player Name</h2>
-                    <div><input type="text" placeholder="Player Name" id="playerName"></div>
-                </div>
-                <div>
-                    <h2>Character Name</h2>
-                    <div><input type="text" placeholder="Character Name" id="characterName"></div>
-                </div>
-                <div class="col-4">
-                    <h2>Player Level</h2>
-                    <input type="number" id="playerLevel" min="1" max="20" value="1" onchange="playerLevelChange();">
-                </div>
-                <div class="col-4">
-                    <h2>Proficiency Bonus</h2>
-                    <input type="text" id="profBonus">
-                
-                </div>
-                <div>
-                    <div>Character Race</div>
-                    <select class="form-select" aria-label="Default select example" id="characterRace">
-                        <option value="Human">Humano</option>
-                        <option value="elve">Elfo</option>
-                        <option value="Dwarf">Enano</option>	
-                    </select>
-                    <div>Speed</div>
-                    <div><input type="text" id="speed"></div>
-                    <div>Size</div>
-                    <div><input type="text" id="size"></div>
-                </div>
+            
+            
+        </div>
+        
+      
+        <div class=" ps-4 d-flex justify-content-center aligne-item-center">
+            <div class="pe-4">
+                <div>Proficiency Bonus</div>
+                <input type="text" id="profBonus">
+            </div>
+            <div class="pe-4">
+                <div>Ac</div>
+                <input type="text" id="ac">
+            </div>
+            <div class="pe-4">
+                <div>Iniciative</div>
+                <input type="text" id="iniciative">
+            </div>
+            <div class="pe-4">
+                <div>Speed</div>
+                <input type="text" id="speed">
+            </div>
+            <div class="pe-4">
+                <div>Size</div>
+                <input type="text" id="size">
+            </div>
+            
+        </div>
+        
 
-                <div>
-                    <div>Character Class</div>
-                    <select class="form-select" aria-label="Default select example" id="characterClass">
-                        <option value="Picaro">Picaro</option>
-                        <option value="Barbaro">Barbaro</option>
-                        <option value="Mago">Mago</option>	
-                    </select>
-                </div>
+        
+        <div class="d-flex justify-content-center aligne-item-center ">
+            <span class="m-3">
+                <div>strength</div>
+                <input type="text" value="10" id="strScore" class="attribute" >
+                <div class=" modifiers " id="strMod"></div>
+            </span>
+            <span class="m-3">
+                <div>Dexterity</div>
+                <input type="text" value="10" id="dexScore" class="attribute" >
+                <div class=" modifiers" id="dexMod"></div>
+            </span>
+            <span class="m-3">
+                <div>Constitution</div>
+                <input type="text" value="10" id="conScore"class="attribute" >
+                <div class=" modifiers" id="conMod"></div>
+            </span>
+            <span class="m-3">
+                <div>Intelligence</div>
+                <input type="text" value="10" id="intScore" class="attribute">   
+                <div class=" modifiers" id="intMod"></div>
+            </span>
+            <span class="m-3">
+                <div>Wisdom</div>
+                <input type="text" value="10" id="wisScore" class="attribute">   
+                <div class=" modifiers" id=" wisMod"></div>
+            </span>
+            <span class="m-3">
+                <div>Charisma</div>
+                <input type="text" value="10" id="chaScore" class="attribute">   
+                <div class=" modifiers" id="chaMod"></div>
+            </span>                                                                                             
+        </div>      
 
-                <div>
-                    <div>strength</div>
-                    <div id="strMod"></div>
-                    <div><input type="text" value="" id="strScore" class="attribute" ></div>
-                </div>
-                <div>
-                    <div>Dexterity</div>
-                    <div id="dexMod"></div>
-                    <div><input type="text" value="10" id="dexScore" class="attribute" ></div>
-                </div>
-                <div>
-                    <div>Constitution</div>
-                    <div id="conMod"></div>
-                    <div><input type="text" value="10" id="conScore"class="attribute" ></div>
-                </div>
-                <div>
-                    <div>Intelligence</div>
-                    <div id="intMod"></div>
-                    <div><input type="text" value="10" id="intScore" class="attribute"></div>
-                </div>
-                <div>
-                    <div>Wisdom</div>
-                    <div id="wisMod"></div>
-                    <div><input type="text" value="10" id="wisScore" class="attribute"></div>
-                </div>
-                <div>
-                    <div>Charisma</div>
-                    <div id="chaMod"></div>
-                    <div><input type="text" value="10" id="chaScore" class="attribute"></div>
-                </div>
-                <div>Features</div>
-                <textarea class="form-control" id="Features"></textarea>
-                <div>Proficiencies</div>
+        <div class="d-flex justify-content-center aligne-item-center ">
+            <div class="m-5">
+                <label>Proficiencies</label>
                 <textarea class="form-control" id="Proficiencies"></textarea>
-                <div>Languages</div>
+                <label class="mt-5 aligne-item center" >Languages</label>
                 <textarea class="form-control" id="Languages"></textarea>
-                <div>Equipament</div>
+            </div>
+            <div class="m-5">   
+                <label>Features</label>
+                <textarea class="form-control" id="Features"></textarea>
+                <label class="mt-5 aligne-item center">Equipament</label>
                 <textarea class="form-control" id="Equipament"></textarea>
-            </table>
-            
             </div>
         </div>
+        
     
     </div>
+
+    
 
 
     <script src="js/objetos.js"></script>

@@ -1,0 +1,25 @@
+{
+  "name": "proyecto-final",
+  "version": "1.0.0",
+  "description": "",
+  "main": "mainOld.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build-css": "node-sass --include-path scss styles/scss/styles.scss styles/css/styles.css --output-style=expanded",
+    "watch-css": "nodemon -e scss -x \"npm run build-css\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/guntherscherzer/JavaScriptProyecto-.git"
+  },
+  "author": "Günther",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/guntherscherzer/JavaScriptProyecto-/issues"
+  },
+  "homepage": "https://github.com/guntherscherzer/JavaScriptProyecto-#readme",
+  "dependencies": {
+    "node-sass": "^7.0.1",
+    "nodemon": "^2.0.19"
+  }
+}
