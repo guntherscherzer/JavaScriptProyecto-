@@ -12,19 +12,18 @@
     <div class=" ">
     
         <div class="m-5 d-flex fs-1 justify-content-center text-decoration-underline">Hoja de Personaje</div>
-    
-        <table class="">  
+
         <div class="d-flex justify-content-center mb-5 playerName">
             <input type="text" placeholder="Player Name" id="playerName">
         </div >             
-        <div class="d-flex">
+        <div class="m-4 d-flex ">
             <input type="text" placeholder="Character Name" id="characterName">
-            <span>
+            <span class="p-4">
                 <label class="playerlabel">Player Level</label> 
                 <input type="number" id="playerLevel" min="1" max="20" value="1" onchange="playerLevelChange();">
             </span>
-            <span>
-                <label class="raceTitle">Character Race</label>
+            <span class="p-4">
+                <label class="raceTitle ">Character Race</label>
                 <select class="form-select raceSelect" aria-label="Default select example" id="characterRace" >
                     <option value="" disabled selected>Select your option</option>
                     <option value="Human">Humano</option>
@@ -32,7 +31,7 @@
                     <option value="Dwarf">Enano</option>	
                 </select>   
             </span>
-            <span>
+            <span class="p-4">
                 <label>Character Class</label>
                 <select class="form-select" aria-label="Default select example" id="characterClass">
                     <option value="" disabled selected>Select your option</option>
@@ -110,15 +109,15 @@
         <div class="d-flex justify-content-center aligne-item-center ">
             <div class="m-5">
                 <label>Proficiencies</label>
-                <textarea class="form-control" id="Proficiencies"></textarea>
+                <textarea class="form-control h-auto" id="proficiencies"></textarea>
                 <label class="mt-5 aligne-item center" >Languages</label>
-                <textarea class="form-control" id="Languages"></textarea>
+                <textarea class="form-control" id="languages"></textarea>
             </div>
             <div class="m-5">   
                 <label>Features</label>
-                <textarea class="form-control" id="Features"></textarea>
+                <textarea class="form-control" id="features"></textarea>
                 <label class="mt-5 aligne-item center">Equipament</label>
-                <textarea class="form-control" id="Equipament"></textarea>
+                <textarea class="form-control" id="equipment"></textarea>
             </div>
         </div>
         

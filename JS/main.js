@@ -2,7 +2,7 @@
 let myPj = new HojaPj();
 
 let characterRace = document.getElementById("characterRace");
-let characterClasses = document.getElementById("characterClasses");
+let characterClass = document.getElementById("characterClass");
 let strScore = document.getElementById("strScore");
 let dexScore = document.getElementById("dexScore");
 let conScore = document.getElementById("conScore");
@@ -17,6 +17,11 @@ let wisMod = document.getElementById("wisMod");
 let chaMod = document.getElementById("chaMod");
 let speed = document.getElementById("speed");
 let size = document.getElementById("size");
+let features = document.getElementById("features");
+let proficiencies = document.getElementById("proficiencies");
+let languages = document.getElementById("languages");
+let equipment = document.getElementById("equipment")
+
 
 characterRace.addEventListener("change",(e)=>{
     let selectedRace;
@@ -31,10 +36,33 @@ characterRace.addEventListener("change",(e)=>{
             selectedRace=dwarf;
             break;
     }
+   
     myPj.characterRace=selectedRace;
     size.value=myPj.characterRace.size;
     speed.value=myPj.characterRace.speed;
+    features.value=myPj.characterRace.features.join("\n");
+    proficiencies.value=myPj.characterRace.proficiencies.join("\n");
+    languages.value=myPj.characterRace.langueges.join("\n");
     
+})
+characterClass.addEventListener("change",(e)=>{
+    let selectedClass;
+    switch (characterClass.value) {
+        case "Barbaro": 
+            selectedClass=barbarian;
+            break;
+        case "Mago": 
+            selectedClass=mage;
+            break;
+        case "Picaro": 
+            selectedClass=rogue;
+            break;
+        }
+        console.log(selectedClass);
+    myPj.characterClass=selectedClass;   
+    proficiencies.value+=myPj.characterClass.proficiencies.join("\n");
+    features.value+=myPj.characterClass.features.join("\n");
+    equipment.value+=myPj.characterClass.equipment.join("\n");
 })
 strScore.addEventListener("keyup",(e)=>{
     myPj.str=strScore.value;
