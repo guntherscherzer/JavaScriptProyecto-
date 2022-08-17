@@ -20,8 +20,8 @@ let size = document.getElementById("size");
 let features = document.getElementById("features");
 let proficiencies = document.getElementById("proficiencies");
 let languages = document.getElementById("languages");
-let equipment = document.getElementById("equipment")
-
+let equipment = document.getElementById("equipment");
+let infos = document.querySelectorAll(".info");
 
 characterRace.addEventListener("change",(e)=>{
     let selectedRace;
@@ -95,3 +95,39 @@ chaScore.addEventListener("keyup",(e)=>{
     myPj.calcMod();
     chaMod.innerText=myPj.chaMod;
 })
+infos.forEach((info)=>{
+    info.addEventListener("click",(e)=>{
+        let infoTitle = "";
+        let infoText = "";
+        switch (info.getAttribute("infoTarget")) {
+            case "attrStr":
+                infoTitle = "Información Atributo Fuerza"
+                infoText = "Mide la potencia física, entrenamiento atlético y situaciones en que se puede ejercer puro poderío físico.";
+                break;
+            case "attrDex":
+                infoTitle = "Información Atributo Destreza "
+                infoText = "Mide la agilidad, los reflejos y el equilibrio.";
+                break;
+            case "attrCon":
+                infoTitle = "Información Atributo Constitución "
+                infoText = "Mide la salud, el aguante y el vigor.";
+                break;   
+            case "attrInt":
+                infoTitle = "Información Atributo Inteligencia"
+                infoText = "Mide la agudeza mental, la exactitud de los recuerdos y la capacidad de razonar.";
+                break;
+            case "attrWis":
+                infoTitle = "Información Atributo Sabiduria"
+                infoText = "Refleja que tan en sintonía estas con el mundo que te rodea y representa la perspicacia e intuición.";
+                break;
+            case "attrCha":
+                infoTitle = "Información Atributo Carisma"
+                infoText = "Mide tu capacidad para interactuar de forma efectiva con otros. Incluye factores tales como la confianza y elocuencia, y puede representar una personalidad encantadora o imponente.";
+                break;
+            }
+        Swal.fire({
+            title: infoTitle,
+            html: infoText,
+        })                
+    })
+});

@@ -9,45 +9,108 @@
     <link rel="stylesheet" type="text/css" href="styles/css/styles.css">
 </head>
 <body>    
-    <div class=" ">
+    <div class="pjCreation">
     
-        <div class="m-5 d-flex fs-1 justify-content-center text-decoration-underline">Hoja de Personaje</div>
-
-        <div class="d-flex justify-content-center mb-5 playerName">
-            <input type="text" placeholder="Player Name" id="playerName">
-        </div >             
-        <div class="m-4 d-flex ">
-            <input type="text" placeholder="Character Name" id="characterName">
-            <span class="p-4">
-                <label class="playerlabel">Player Level</label> 
-                <input type="number" id="playerLevel" min="1" max="20" value="1" onchange="playerLevelChange();">
-            </span>
-            <span class="p-4">
-                <label class="raceTitle ">Character Race</label>
-                <select class="form-select raceSelect" aria-label="Default select example" id="characterRace" >
-                    <option value="" disabled selected>Select your option</option>
-                    <option value="Human">Humano</option>
-                    <option value="Elve">Elfo</option>
-                    <option value="Dwarf">Enano</option>	
-                </select>   
-            </span>
-            <span class="p-4">
-                <label>Character Class</label>
-                <select class="form-select" aria-label="Default select example" id="characterClass">
-                    <option value="" disabled selected>Select your option</option>
-                    <option value="Picaro">Picaro</option>
-                    <option value="Barbaro">Barbaro</option>
-                    <option value="Mago">Mago</option>	
-                </select>
-    
-            </span>
-            
-            
-            
+        <div class=" d-flex fs-1 justify-content-center bg-black text-white">
+            Hoja de Personaje
         </div>
-        
-      
-        <div class=" ps-4 d-flex justify-content-center aligne-item-center">
+        <div class="bg-dark principalAspect">
+            <div class="p-2 playerName">
+                <input type="text" placeholder="Character Name" id="characterName">
+                <input class="pl-5" type="text" placeholder="Player Name" id="playerName">
+            </div >
+
+            <div class=" d-flex selects ">
+                <span class="p-2">
+                    <label class="pb-1 text-white playerlabel">Player Level</label> 
+                    <input class=" lvlNumber" type="number" id="playerLevel" min="1" max="20" value="1" onchange="playerLevelChange();">
+                </span>
+                <span class="p-2">
+                    <label class="text-white title ">Character Race</label>
+                    <select class="form-select raceSelect" aria-label="Default select example" id="characterRace" >
+                        <option value="" disabled selected>Select your option</option>
+                        <option value="Human">Humano</option>
+                        <option value="Elve">Elfo</option>
+                        <option value="Dwarf">Enano</option>	
+                    </select>   
+                </span>
+                <span class="p-2">
+                    <label class="text-white title">Character Class</label>
+                    <select class="form-select classSelect" aria-label="Default select example" id="characterClass">
+                        <option value="" disabled selected>Select your option</option>
+                        <option value="Picaro">Picaro</option>
+                        <option value="Barbaro">Barbaro</option>
+                        <option value="Mago">Mago</option>	
+                    </select>
+                </span>
+                
+                
+                
+            </div>
+        </div>
+         
+        <div class="quick_info">
+            <div class="AttrsGroup">
+
+                <span class="attrGroup">
+                    <div class="attName">strength
+                        <img class="info" src="Img/Info.png" alt="Info" infoTarget="attrStr">
+                    </div>  
+                    <div class=" modifiers " id="strMod"></div>
+                    <input type="text" value="10" id="strScore" class="attribute" >
+                </span>
+                
+                <span class="attrGroup">
+                    <div class="attName">Dexterity
+                        <img class="info" src="Img/Info.png" alt="Info" infoTarget="attrDex">
+                    </div>
+                    <div class=" modifiers" id="dexMod"></div>
+                    <input type="text" value="10" id="dexScore" class="attribute" >
+                </span>
+                <span class="attrGroup">
+                    <div class="attName">Constitution
+                        <img class="info" src="Img/Info.png" alt="Info" infoTarget="attrCon">
+                    </div>
+                    <div class=" modifiers" id="conMod"></div>
+                    <input type="text" value="10" id="conScore"class="attribute" >
+                </span>
+                <span class="attrGroup">
+                    <div class="attName">Intelligence
+                        <img class="info" src="Img/Info.png" alt="Info" infoTarget="attrInt">
+                    </div>
+                    <div class=" modifiers" id="intMod"></div>
+                    <input type="text" value="10" id="intScore" class="attribute">   
+                </span>
+                <span class="attrGroup">
+                    <div class="attName">Wisdom
+                        <img class="info" src="Img/Info.png" alt="Info" infoTarget="attrWis">
+                    </div>
+                    <div class=" modifiers" id=" wisMod"></div>
+                    <input type="text" value="10" id="wisScore" class="attribute">   
+                </span>
+                <span class="attrGroup">
+                    <div class="attName">Charisma
+                        <img class="info" src="Img/Info.png" alt="Info" infoTarget="attrCha">
+                    </div>
+                    <div class=" modifiers" id="chaMod"></div>
+                    <input type="text" value="10" id="chaScore" class="attribute">   
+                </span>
+            </div>
+            <span class="inspiration" >
+                <div class="insName">inspiration</div>
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+            </span>    
+            <span class="hitPoints">
+                <div>
+                   <button type="button" class="btn btn-success">HEAL</button>
+                   <label>Current</label>
+                   <label>Max</label>
+                   <label>Temp</label>
+                </div>
+            </span>                                                                                         
+        </div>
+       
+        <div class=" m-5 d-flex justify-content-center aligne-item-center">
             <div class="pe-4">
                 <div>Proficiency Bonus</div>
                 <input type="text" id="profBonus">
@@ -73,38 +136,7 @@
         
 
         
-        <div class="d-flex justify-content-center aligne-item-center ">
-            <span class="m-3">
-                <div>strength</div>
-                <input type="text" value="10" id="strScore" class="attribute" >
-                <div class=" modifiers " id="strMod"></div>
-            </span>
-            <span class="m-3">
-                <div>Dexterity</div>
-                <input type="text" value="10" id="dexScore" class="attribute" >
-                <div class=" modifiers" id="dexMod"></div>
-            </span>
-            <span class="m-3">
-                <div>Constitution</div>
-                <input type="text" value="10" id="conScore"class="attribute" >
-                <div class=" modifiers" id="conMod"></div>
-            </span>
-            <span class="m-3">
-                <div>Intelligence</div>
-                <input type="text" value="10" id="intScore" class="attribute">   
-                <div class=" modifiers" id="intMod"></div>
-            </span>
-            <span class="m-3">
-                <div>Wisdom</div>
-                <input type="text" value="10" id="wisScore" class="attribute">   
-                <div class=" modifiers" id=" wisMod"></div>
-            </span>
-            <span class="m-3">
-                <div>Charisma</div>
-                <input type="text" value="10" id="chaScore" class="attribute">   
-                <div class=" modifiers" id="chaMod"></div>
-            </span>                                                                                             
-        </div>      
+              
 
         <div class="d-flex justify-content-center aligne-item-center ">
             <div class="m-5">
@@ -126,11 +158,13 @@
 
     
 
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.27/dist/sweetalert2.all.min.js"></script>
 
     <script src="js/objetos.js"></script>
     <script src="js/characterClasses.js"></script>
     <script src="js/characterRaces.js"></script>
     <script src="js/main.js"></script>
+    
 </body>
 
 </html>

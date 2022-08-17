@@ -7,38 +7,100 @@ body{
     background-image: url("../../img/backgraund.jpg");
     background-size: cover;
     background-repeat: no-repeat;
+    
 }
 .playerName{
-    border-radius: 30%;
-
-    font-size: 1.5rem;
+    font-size: 1rem;
     width: auto;
     height: auto;
+    border-style: none;
+    background: transparent;
+        #playerName{
+            float: right;
+            margin-right: 40px;
+        }
+    
 }
-#characterName{
-    font-size: 1.7rem;
+.selects{
+    font-size: 0.7rem;
+    .lvlNumber{
+        font-size: 0.9rem;
+        text-align: center;
+    }
+    .title{
+        display: flex;
+        justify-content: center;
+    }
+    .raceSelect{
+        font-size: 0.7rem;
+    }
+    .classSelect{
+        font-size: 0.7rem;
+    }
 }
 .playerlabel { 
     display: block;
     
 }
-.raceTitle{
-  
-    
-}
-.attribute{
-    
-}
-.modifiers{
+.quick_info{
     display: flex;
-    justify-content: center;
-    align-items: center;
-    left: 20%;
-    border: 2px;
-    border-style: ridge;
-    border-color: black;
-    margin-top: 15%;
-    font-size: 2rem;
-    width: 40%;
-    height: 40%;
+    justify-content: start;
+    .AttrsGroup{
+        display: flex;
+        justify-content: space-between;
+        width: 60%;
+        .attrGroup{
+            width: 7%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            
+            .attribute{
+                width: 40%;
+                height: auto;
+                text-align: center;
+                z-index: 2;
+            }
+            .modifiers{
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                border: 4px;
+                border-start-start-radius: 40%;
+                border-start-end-radius: 40%;
+                border-style: ridge;
+                border-color: rgb(105, 97, 97);
+                font-size: 2rem;
+                height: 70px;
+            }
+            .attName{
+                display: flex;
+                text-align: center;
+                font-size: 0.8rem;
+                
+                .info{
+                    margin-top: 5px;
+                    margin-left: 5px;
+                    width: 15px;
+                    height: 15px;
+                }
+                
+            }
+        }
+    }
+
+    .inspiration{
+       
+        .form-check-input{
+            display: flex;
+            align-items: center;
+            width: 70%;
+            height: 30%;
+            
+        }
+    }
+    .btn-success{}
+    
 }
+
+
