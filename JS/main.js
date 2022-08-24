@@ -22,6 +22,8 @@ let proficiencies = document.getElementById("proficiencies");
 let languages = document.getElementById("languages");
 let equipment = document.getElementById("equipment");
 let infos = document.querySelectorAll(".info");
+let background = document.getElementById("background");
+let alignment = document.getElementById("alignment");
 
 characterRace.addEventListener("change",(e)=>{
     let selectedRace;
@@ -131,3 +133,55 @@ infos.forEach((info)=>{
         })                
     })
 });
+
+
+fetch("https://www.dnd5eapi.co/api/races")
+    .then((response)=>response.json())
+    .then((races)=>{
+        races.results.forEach(race => {
+            let option = document.createElement("option")
+            option.value= race.index
+            option.innerText= race.name
+            
+            
+            characterRace.appendChild(option)
+            
+        });
+    })
+fetch("https://www.dnd5eapi.co/api/classes")
+    .then((response)=>response.json())
+    .then((classes)=>{
+        classes.results.forEach(clase => {
+            let option = document.createElement("option")
+            option.value= clase.index
+            option.innerText= clase.name
+            
+            
+            characterClass.appendChild(option)
+            
+        });
+    })
+fetch("https://www.dnd5eapi.co/api/backgrounds")
+    .then((response)=>response.json())
+    .then((backgrounds)=>{
+        backgrounds.results.forEach(trasfondo => {
+            let option = document.createElement("option")
+            option.value= trasfondo.index
+            option.innerText= trasfondo.name
+            
+            background.appendChild(option)
+            
+        });
+    })
+fetch("https://www.dnd5eapi.co/api/alignments")
+    .then((response)=>response.json())
+    .then((alignments)=>{
+        alignments.results.forEach(alineamiento => {
+            let option = document.createElement("option")
+            option.value= alineamiento.index
+            option.innerText= alineamiento.name
+            
+            alignment.appendChild(option)
+            
+        });
+    })
