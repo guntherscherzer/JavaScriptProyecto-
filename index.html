@@ -46,8 +46,12 @@
                     <option value="" disabled selected>Select alignment</option> 
                 </select>
               </li>
-              <li>
-                <label for="experiencepoints">Experience Points</label><input name="experiencepoints" placeholder="3240" />
+              <li >
+                <label for="experiencepoints">Experience Points</label><input name="experiencepoints" placeholder="3240" id="experiencepoints" />
+              </li>
+              <li >
+                <label for="lvl" >Character Level</label> 
+                <input class=" lvlNumber" type="number" id="lvl" min="1" max="20" value="1">
               </li>
             </ul>
           </section>
@@ -59,50 +63,50 @@
                 <ul>
                   <li>
                     <div class="score">
-                      <label for="Strengthscore">Strength</label><input name="Strengthscore" placeholder="10" class="stat" id="strScore"/>
+                      <label for="Strengthscore" class="info" infoTarget="attrStr" >Strength</label><input name="Strengthscore" placeholder="10" class="stat" id="strScore" pjAttr="str"/>
                     </div>
                     <div class="modifier">
-                      <span name="Strengthmod" placeholder="+0" class="statmod" id="strMod">+0</span>
+                      <span name="Strengthmod" placeholder="+0" class="statmod" id="strMod" pjAttr="str">+0</span>
                     </div>
                   </li>
                   <li>
                     <div class="score">
-                      <label for="Dexterityscore">Dexterity</label><input name="Dexterityscore" placeholder="10" class="stat" id="dexScore"/>
+                      <label for="Dexterityscore" class="info" infoTarget="attrDex" >Dexterity</label><input name="Dexterityscore" placeholder="10" class="stat" id="dexScore" pjAttr="dex"/>
                     </div>
                     <div class="modifier">
-                      <span name="Dexteritymod" placeholder="+0" class=statmod id="dexMod">+0</span>
+                      <span name="Dexteritymod" placeholder="+0" class=statmod id="dexMod" pjAttr="dex">+0</span>
                     </div>
                   </li>
                   <li>
                     <div class="score">
-                      <label for="Constitutionscore">Constitution</label><input name="Constitutionscore" placeholder="10" class="stat" id="conScore"/>
+                      <label for="Constitutionscore" class="info" infoTarget="attrCon" >Constitution</label><input name="Constitutionscore" placeholder="10" class="stat" id="conScore" pjAttr="con"/>
                     </div>
                     <div class="modifier">
-                      <span name="Constitutionmod" placeholder="+0" class="statmod" id="conMod">+0</span>
+                      <span name="Constitutionmod" placeholder="+0" class="statmod" id="conMod" pjAttr="con">+0</span>
                     </div>
                   </li>
                   <li>
                     <div class="score">
-                      <label for="Wisdomscore">Wisdom</label><input name="Wisdomscore" placeholder="10" class="stat" id="wisScore"/>
+                      <label for="Intelligencescore" class="info" infoTarget="attrInt" >Intelligence</label><input name="Intelligencescore" placeholder="10" class="stat" id="intScore" pjAttr="int"/>
                     </div>
                     <div class="modifier">
-                      <span name="Wisdommod" placeholder="+0" id="wisMod">+0</span>
+                      <span name="Intelligencemod" placeholder="+0" class="statmod" id="intMod" pjAttr="int">+0</span>
                     </div>
                   </li>
                   <li>
                     <div class="score">
-                      <label for="Intelligencescore">Intelligence</label><input name="Intelligencescore" placeholder="10" class="stat" id="intScore"/>
+                      <label for="Wisdomscore" class="info" infoTarget="attrWis" >Wisdom</label><input name="Wisdomscore" placeholder="10" class="stat" id="wisScore" pjAttr="wis"/>
                     </div>
                     <div class="modifier">
-                      <span name="Intelligencemod" placeholder="+0" class="statmod" id="intMod">+0</span>
+                      <span name="Wisdommod" placeholder="+0" id="wisMod" pjAttr="wis">+0</span>
                     </div>
                   </li>
                   <li>
                     <div class="score">
-                      <label for="Charismascore">Charisma</label><input name="Charismascore" placeholder="10" class="stat" id="chaScore"/>
+                      <label for="Charismascore" class="info" infoTarget="attrCha" >Charisma</label><input name="Charismascore" placeholder="10" class="stat" id="chaScore" pjAttr="cha"/>
                     </div>
                     <div class="modifier">
-                      <span name="Charismamod" placeholder="+0" class="statmod" id="chaMod">+0</span>
+                      <span name="Charismamod" placeholder="+0" class="statmod" id="chaMod" pjAttr="cha">+0</span>
                     </div>
                   </li>
                 </ul>
@@ -118,27 +122,27 @@
                   <div class="label-container">
                     <label for="proficiencybonus">Proficiency Bonus</label>
                   </div>
-                  <input name="proficiencybonus" placeholder="+2" />
+                  <input name="proficiencybonus"  value="+2" type="text" id="proficiencyBonus" readonly />
                 </div>
                 <div class="saves list-section box">
                   <ul>
                     <li>
-                      <label for="Strength-save">Strength</label><input name="Strength-save" placeholder="+0" type="text" /><input name="Strength-save-prof" type="checkbox" />
+                      <label for="Strength-save" class="info">Strength</label><input name="Strength-save" placeholder="+0" type="text" class="savingThrowsValue strModValue" pjAttr="str" /><input name="Strength-save-prof" type="checkbox" id="SavingThrowsstr" class="savingThrowsProf" pjAttr="str"/>
                     </li>
                     <li>
-                      <label for="Dexterity-save">Dexterity</label><input name="Dexterity-save" placeholder="+0" type="text" /><input name="Dexterity-save-prof" type="checkbox" />
+                      <label for="Dexterity-save" class="info">Dexterity</label><input name="Dexterity-save" placeholder="+0" type="text"  class="savingThrowsValue dexModValue" pjAttr="dex"/><input name="Dexterity-save-prof" type="checkbox" id="SavingThrowsdex" class="savingThrowsProf" pjAttr="dex"/>
                     </li>
                     <li>
-                      <label for="Constitution-save">Constitution</label><input name="Constitution-save" placeholder="+0" type="text" /><input name="Constitution-save-prof" type="checkbox" />
+                      <label for="Constitution-save" class="info">Constitution</label><input name="Constitution-save" placeholder="+0" type="text"  class="savingThrowsValue conModValue" pjAttr="con"/><input name="Constitution-save-prof" type="checkbox"id="SavingThrowscon"  class="savingThrowsProf" pjAttr="con"/>
                     </li>
                     <li>
-                      <label for="Wisdom-save">Wisdom</label><input name="Wisdom-save" placeholder="+0" type="text" /><input name="Wisdom-save-prof" type="checkbox" />
+                      <label for="Intelligence-save" class="info">Intelligence</label><input name="Intelligence-save" placeholder="+0" type="text" class="savingThrowsValue intModValue" pjAttr="int"/><input name="Intelligence-save-prof" type="checkbox" id="SavingThrowsint"class="savingThrowsProf" pjAttr="int"/>
                     </li>
                     <li>
-                      <label for="Intelligence-save">Intelligence</label><input name="Intelligence-save" placeholder="+0" type="text" /><input name="Intelligence-save-prof" type="checkbox" />
+                      <label for="Wisdom-save" class="info">Wisdom</label><input name="Wisdom-save" placeholder="+0" type="text" class="savingThrowsValue wisModValue" pjAttr="wis"/><input name="Wisdom-save-prof" type="checkbox" id="SavingThrowswis"class="savingThrowsProf" pjAttr="wis" />
                     </li>
                     <li>
-                      <label for="Charisma-save">Charisma</label><input name="Charisma-save" placeholder="+0" type="text" /><input name="Charisma-save-prof" type="checkbox" />
+                      <label for="Charisma-save" class="info">Charisma</label><input name="Charisma-save" placeholder="+0" type="text" class="savingThrowsValue chaModValue" pjAttr="cha" /><input name="Charisma-save-prof" type="checkbox" id="SavingThrowscha"class="savingThrowsProf" pjAttr="cha"/>
                     </li>
                   </ul>
                   <div class="label">
@@ -148,58 +152,58 @@
                 <div class="skills list-section box">
                   <ul>
                     <li>
-                      <label for="Acrobatics">Acrobatics <span class="skill">(Dex)</span></label><input name="Acrobatics" placeholder="+0" type="text" /><input name="Acrobatics-prof" type="checkbox" />
+                      <label for="Acrobatics"class="info"> Acrobatics <span class="skill">(Dex)</span></label><input name="Acrobatics" placeholder="+0" type="text"  class="skillsValue" pjSkill="acrobatics" /><input name="Acrobatics-prof" type="checkbox" class="skillsProf" pjSkill="acrobatics" />
                     </li>
                     <li>
-                      <label for="Animal Handling">Animal Handling <span class="skill">(Wis)</span></label><input name="Animal Handling" placeholder="+0" type="text" /><input name="Animal Handling-prof" type="checkbox" />
+                      <label for="Animal Handling" class="info">Animal Handling <span class="skill">(Wis)</span></label><input name="Animal Handling" placeholder="+0" type="text"  class="skillsValue" pjSkill="animal_handling"/><input name="Animal Handling-prof" type="checkbox" class="skillsProf" pjSkill="animal_handling"  />
                     </li>
                     <li>
-                      <label for="Arcana">Arcana <span class="skill">(Int)</span></label><input name="Arcana" placeholder="+0" type="text" /><input name="Arcana-prof" type="checkbox" />
+                      <label for="Arcana" class="info">Arcana <span class="skill">(Int)</span></label><input name="Arcana" placeholder="+0" type="text" class="skillsValue" pjSkill="arcana"/><input name="Arcana-prof" type="checkbox" class="skillsProf" pjSkill="arcana"  />
                     </li>
                     <li>
-                      <label for="Athletics">Athletics <span class="skill">(Str)</span></label><input name="Athletics" placeholder="+0" type="text" /><input name="Athletics-prof" type="checkbox" />
+                      <label for="Athletics" class="info">Athletics <span class="skill">(Str)</span></label><input name="Athletics" placeholder="+0" type="text" class="skillsValue"  pjSkill="athletics" /><input name="Athletics-prof" type="checkbox" class="skillsProf" pjSkill="athletics"/>
                     </li>
                     <li>
-                      <label for="Deception">Deception <span class="skill">(Cha)</span></label><input name="Deception" placeholder="+0" type="text" /><input name="Deception-prof" type="checkbox" />
+                      <label for="Deception" class="info">Deception <span class="skill">(Cha)</span></label><input name="Deception" placeholder="+0" type="text" class="skillsValue" pjSkill="deception"/><input name="Deception-prof" type="checkbox" class="skillsProf" pjSkill="deception"/>
                     </li>
                     <li>
-                      <label for="History">History <span class="skill">(Int)</span></label><input name="History" placeholder="+0" type="text" /><input name="History-prof" type="checkbox" />
+                      <label for="History" class="info">History <span class="skill">(Int)</span></label><input name="History" placeholder="+0" type="text"  class="skillsValue" pjSkill="history"/><input name="History-prof" type="checkbox" class="skillsProf" pjSkill="history"/>
                     </li>
                     <li>
-                      <label for="Insight">Insight <span class="skill">(Wis)</span></label><input name="Insight" placeholder="+0" type="text" /><input name="Insight-prof" type="checkbox" />
+                      <label for="Insight" class="info">Insight <span class="skill">(Wis)</span></label><input name="Insight" placeholder="+0" type="text" class="skillsValue" pjSkill="insight"/><input name="Insight-prof" type="checkbox" class="skillsProf" pjSkill="insight"/>
                     </li>
                     <li>
-                      <label for="Intimidation">Intimidation <span class="skill">(Cha)</span></label><input name="Intimidation" placeholder="+0" type="text" /><input name="Intimidation-prof" type="checkbox" />
+                      <label for="Intimidation" class="info">Intimidation <span class="skill">(Cha)</span></label><input name="Intimidation" placeholder="+0" type="text"  class="skillsValue" pjSkill="intimidation"/><input name="Intimidation-prof" type="checkbox" class="skillsProf" pjSkill="intimidation"/>
                     </li>
                     <li>
-                      <label for="Investigation">Investigation <span class="skill">(Int)</span></label><input name="Investigation" placeholder="+0" type="text" /><input name="Investigation-prof" type="checkbox" />
+                      <label for="Investigation" class="info">Investigation <span class="skill">(Int)</span></label><input name="Investigation" placeholder="+0" type="text" class="skillsValue" pjSkill="investigation"/><input name="Investigation-prof" type="checkbox" class="skillsProf" pjSkill="investigation"/>
                     </li>
                     <li>
-                      <label for="Medicine">Medicine <span class="skill">(Wis)</span></label><input name="Medicine" placeholder="+0" type="text" /><input name="Medicine-prof" type="checkbox" />
+                      <label for="Medicine" class="info">Medicine <span class="skill">(Wis)</span></label><input name="Medicine" placeholder="+0" type="text" class="skillsValue" pjSkill="medicine"/><input name="Medicine-prof" type="checkbox" class="skillsProf" pjSkill="medicine"/>
                     </li>
                     <li>
-                      <label for="Nature">Nature <span class="skill">(Int)</span></label><input name="Nature" placeholder="+0" type="text" /><input name="Nature-prof" type="checkbox" />
+                      <label for="Nature" class="info">Nature <span class="skill">(Int)</span></label><input name="Nature" placeholder="+0" type="text" class="skillsValue" pjSkill="nature"/><input name="Nature-prof" type="checkbox" class="skillsProf" pjSkill="nature"/>
                     </li>
                     <li>
-                      <label for="Perception">Perception <span class="skill">(Wis)</span></label><input name="Perception" placeholder="+0" type="text" /><input name="Perception-prof" type="checkbox" />
+                      <label for="Perception" class="info">Perception <span class="skill">(Wis)</span></label><input name="Perception" placeholder="+0" type="text" class="skillsValue" pjSkill="perception" /><input name="Perception-prof" type="checkbox" class="skillsProf" pjSkill="perception"/>
                     </li>
                     <li>
-                      <label for="Performance">Performance <span class="skill">(Cha)</span></label><input name="Performance" placeholder="+0" type="text" /><input name="Performance-prof" type="checkbox" />
+                      <label for="Performance" class="info">Performance <span class="skill">(Cha)</span></label><input name="Performance" placeholder="+0" type="text"  class="skillsValue" pjSkill="performance"/><input name="Performance-prof" type="checkbox" class="skillsProf" pjSkill="performance" />
                     </li>
                     <li>
-                      <label for="Persuasion">Persuasion <span class="skill">(Cha)</span></label><input name="Persuasion" placeholder="+0" type="text" /><input name="Persuasion-prof" type="checkbox" />
+                      <label for="Persuasion" class="info">Persuasion <span class="skill">(Cha)</span></label><input name="Persuasion" placeholder="+0" type="text" class="skillsValue" pjSkill="persuasion" /><input name="Persuasion-prof" type="checkbox" class="skillsProf" pjSkill="persuasion"/>
                     </li>
                     <li>
-                      <label for="Religion">Religion <span class="skill">(Int)</span></label><input name="Religion" placeholder="+0" type="text" /><input name="Religion-prof" type="checkbox" />
+                      <label for="Religion" class="info">Religion <span class="skill">(Int)</span></label><input name="Religion" placeholder="+0" type="text" class="skillsValue" pjSkill="religion"/><input name="Religion-prof" type="checkbox" class="skillsProf" pjSkill="religion"/>
                     </li>
                     <li>
-                      <label for="Sleight of Hand">Sleight of Hand <span class="skill">(Dex)</span></label><input name="Sleight of Hand" placeholder="+0" type="text" /><input name="Sleight of Hand-prof" type="checkbox" />
+                      <label for="Sleight of Hand" class="info">Sleight of Hand <span class="skill">(Dex)</span></label><input name="Sleight of Hand" placeholder="+0" type="text"  class="skillsValue"  pjSkill="sleight_of_hand" /><input name="Sleight of Hand-prof" type="checkbox" class="skillsProf"  pjSkill="sleight_of_hand" />
                     </li>
                     <li>
-                      <label for="Stealth">Stealth <span class="skill">(Dex)</span></label><input name="Stealth" placeholder="+0" type="text" /><input name="Stealth-prof" type="checkbox" />
+                      <label for="Stealth" class="info">Stealth <span class="skill">(Dex)</span></label><input name="Stealth" placeholder="+0" type="text" class="skillsValue"  pjSkill="stealth"  /><input name="Stealth-prof" type="checkbox" class="skillsProf" pjSkill="stealth"/>
                     </li>
                     <li>
-                      <label for="Survival">Survival <span class="skill">(Wis)</span></label><input name="Survival" placeholder="+0" type="text" /><input name="Survival-prof" type="checkbox" />
+                      <label for="Survival" class="info">Survival <span class="skill">(Wis)</span></label><input name="Survival" placeholder="+0" type="text" class="skillsValue" pjSkill="survival"/><input name="Survival-prof" type="checkbox" class="skillsProf" pjSkill="survival"/>
                     </li>
                   </ul>
                   <div class="label">
@@ -215,7 +219,7 @@
               <input name="passiveperception" placeholder="10" />
             </div>
             <div class="otherprofs box textblock">
-              <label for="otherprofs">Other Proficiencies and Languages</label><textarea name="otherprofs"></textarea>
+              <label for="otherprofs">Other Proficiencies and Languages</label><textarea name="otherprofs" id="proficiencies"></textarea>
             </div>
           </section>
           <section>
@@ -227,7 +231,7 @@
               </div>
               <div class="initiative">
                 <div>
-                  <label for="initiative">Initiative</label><input name="initiative" placeholder="+0" type="text" />
+                  <label for="initiative">Initiative</label><input name="initiative" placeholder="+0" type="text" id="initiative" readonly/>
                 </div>
               </div>
               <div class="speed">
@@ -362,7 +366,7 @@
                     </li>
                   </ul>
                 </div>
-                <textarea placeholder="Equipment list here"></textarea>
+                <textarea placeholder="Equipment list here" id="equipment"></textarea>
               </div>
             </section>
           </section>
@@ -383,7 +387,7 @@
             </section>
             <section class="features">
               <div>
-                <label for="features">Features & Traits</label><textarea name="features"></textarea>
+                <label for="features">Features & Traits</label><textarea name="features" id="features"></textarea>
               </div>
             </section>
           </section>

@@ -3,12 +3,14 @@ let myPj = new HojaPj();
 
 let characterRace = document.getElementById("characterRace");
 let characterClass = document.getElementById("characterClass");
+let attrsValue = document.querySelectorAll(".stat");
 let strScore = document.getElementById("strScore");
 let dexScore = document.getElementById("dexScore");
 let conScore = document.getElementById("conScore");
 let wisScore = document.getElementById("wisScore");
 let intScore = document.getElementById("intScore");
 let chaScore = document.getElementById("chaScore");
+let attrsMod = document.querySelectorAll(".statmod");
 let strMod = document.getElementById("strMod");
 let dexMod = document.getElementById("dexMod");
 let conMod = document.getElementById("conMod");
@@ -16,86 +18,146 @@ let intMod = document.getElementById("intMod");
 let wisMod = document.getElementById("wisMod");
 let chaMod = document.getElementById("chaMod");
 let speed = document.getElementById("speed");
-let size = document.getElementById("size");
 let features = document.getElementById("features");
 let proficiencies = document.getElementById("proficiencies");
 let languages = document.getElementById("languages");
 let equipment = document.getElementById("equipment");
 let infos = document.querySelectorAll(".info");
-let background = document.getElementById("background");
+let backgrounds = document.getElementById("background");
 let alignment = document.getElementById("alignment");
+let proficiencybonus= document.getElementById("proficiencybonus");
+let experiencepoints = document.getElementById("experiencepoints");
+let initiative = document.getElementById("initiative");
+let lvl = document.getElementById("lvl");
+let savingThrowsValue = document.querySelectorAll(".savingThrowsValue");
+let savingThrowsProf = document.querySelectorAll(".savingThrowsProf");
 
+let skillsValue = document.querySelectorAll(".skillsValue")
+let skillsProf = document.querySelectorAll(".skillsProf")
+
+let strModValue = document.querySelectorAll(".strModValue")
+let dexModValue = document.querySelectorAll(".dexModValue")
+let conModValue = document.querySelectorAll(".conModValue")
+let intModValue = document.querySelectorAll(".intModValue")
+let wisModValue = document.querySelectorAll(".wisModValue")
+let chaModValue = document.querySelectorAll(".chaModValue")
+
+
+// Fetch a la api del select
+
+fetch("https://www.dnd5eapi.co/api/races")
+    .then((response)=>response.json())
+    .then((races)=>{
+        races.results.forEach(race => {
+            let option = document.createElement("option")
+            option.value= race.index
+            option.innerText= race.name
+            
+            characterRace.appendChild(option)
+            
+        });
+    })
+fetch("https://www.dnd5eapi.co/api/classes")
+    .then((response)=>response.json())
+    .then((classes)=>{
+        classes.results.forEach(clase => {
+            let option = document.createElement("option")
+            option.value= clase.index
+            option.innerText= clase.name
+            
+            characterClass.appendChild(option)
+            
+        });
+    })
+fetch("https://www.dnd5eapi.co/api/backgrounds")
+    .then((response)=>response.json())
+    .then((backgrounds)=>{
+        backgrounds.results.forEach(trasfondo => {
+            let option = document.createElement("option")
+            option.value= trasfondo.index
+            option.innerText= trasfondo.name
+            
+            background.appendChild(option)
+            
+        });
+    })
+
+    fetch("https://www.dnd5eapi.co/api/alignments")
+    .then((response)=>response.json())
+    .then((alignments)=>{
+        alignments.results.forEach(alineamiento => {
+            let option = document.createElement("option")
+            option.value= alineamiento.index
+            option.innerText= alineamiento.name
+            
+            alignment.appendChild(option)
+            
+        });
+    })
+
+//  eventos
 characterRace.addEventListener("change",(e)=>{
-    let selectedRace;
-    switch (characterRace.value) {
-        case "Human": 
-            selectedRace=human;
-            break;
-        case "Elve": 
-            selectedRace=elve;
-            break;
-        case "Dwarf": 
-            selectedRace=dwarf;
-            break;
-    }
-   
-    myPj.characterRace=selectedRace;
-    size.value=myPj.characterRace.size;
-    speed.value=myPj.characterRace.speed;
-    features.value=myPj.characterRace.features.join("\n");
-    proficiencies.value=myPj.characterRace.proficiencies.join("\n");
-    languages.value=myPj.characterRace.langueges.join("\n");
+    let RaceId = e.target.value;
+    console.log(RaceId);
+    fetch(`https://www.dnd5eapi.co/api/races/${RaceId}`)
+        .then((response)=>response.json())
+        .then(race=>{
+            console.log(race);
+            const myRace = new CharacterRace(race.name)
+            race.ability_bonuses.forEach(abilityBonus => {
+                myRace[abilityBonus.ability_score.index]= abilityBonus.bonus           
+            });
+            myRace.size = race.size;
+            myRace.speed = race.speed
+            myRace.features = race.traits.map(trait=>trait.name);
+            myRace.proficiencies = race.starting_proficiencies.map(proficiencie=>proficiencie.name);
+            myRace.langueges = race.languages.map(language=>language.name);
+            console.log(myRace);
+            myPj.characterRace=myRace;
+            speed.value=myPj.characterRace.speed;
+            features.value=myPj.characterRace.features.join("\n");
+            proficiencies.value=myPj.characterRace.proficiencies.join("\n");
+            proficiencies.value+="\n"+myPj.characterRace.langueges.join("\n");
+        })
+    
     
 })
 characterClass.addEventListener("change",(e)=>{
-    let selectedClass;
-    switch (characterClass.value) {
-        case "Barbaro": 
-            selectedClass=barbarian;
-            break;
-        case "Mago": 
-            selectedClass=mage;
-            break;
-        case "Picaro": 
-            selectedClass=rogue;
-            break;
-        }
-        console.log(selectedClass);
-    myPj.characterClass=selectedClass;   
-    proficiencies.value+=myPj.characterClass.proficiencies.join("\n");
-    features.value+=myPj.characterClass.features.join("\n");
-    equipment.value+=myPj.characterClass.equipment.join("\n");
+    let ClassId = e.target.value;
+    console.log(characterClass);
+    fetch(`https://www.dnd5eapi.co/api/classes/${ClassId}`)
+        .then((response)=>response.json())
+        .then(clase=>{
+            console.log(clase);
+            const myClass = new CharacterClass(clase.name);
+            myClass.hitDice = clase.hit_die;
+            myClass.proficiencies = clase.proficiencies.map(proficiencie=>proficiencie.name);
+            myClass.savingThrows = clase.saving_throws.map(saving_throw=>saving_throw.index);
+            myClass.equipment = clase.starting_equipment.map(equip=>equip.equipment.name);
+            console.log(myClass);
+            let savingThrowsCheckbox = ["str","dex","con","int","wis","cha"];
+            savingThrowsCheckbox.forEach((checkbox)=>document.getElementById(`SavingThrows${checkbox}`).removeAttribute("checked"));
+            myClass.savingThrows.forEach((savingThrow)=>{
+                document.getElementById(`SavingThrows${savingThrow}`).setAttribute("checked", true);
+            })
+            myPj.characterClass=myClass;   
+            proficiencies.value+="\n"+myPj.characterClass.proficiencies.join("\n");
+            features.value+=myPj.characterClass.features.join("\n");
+            equipment.value+=myPj.characterClass.equipment.join("\n");
+        })
+        
 })
-strScore.addEventListener("keyup",(e)=>{
-    myPj.str=strScore.value;
-    myPj.calcMod();
-    strMod.innerText=myPj.strMod;
-})
-dexScore.addEventListener("keyup",(e)=>{
-    myPj.dex=dexScore.value;
-    myPj.calcMod();
-    dexMod.innerText=myPj.dexMod;
-})
-conScore.addEventListener("keyup",(e)=>{
-    myPj.con=conScore.value;
-    myPj.calcMod();
-    conMod.innerText=myPj.conMod;
-    
-})
-wisScore.addEventListener("keyup",(e)=>{
-    myPj.wis=wisScore.value;
-    myPj.calcMod();
-    wisMod.innerText=myPj.wisMod;
-})
-intScore.addEventListener("keyup",(e)=>{
-    myPj.int=IntScore.value;
-    myPj.calcMod();
-    intMod.innerText=myPj.intMod;
-})
-chaScore.addEventListener("keyup",(e)=>{
-    myPj.cha=chaScore.value;
-    myPj.calcMod();
-    chaMod.innerText=myPj.chaMod;
+backgrounds.addEventListener("change",(e)=>{
+    let backgrounds = e.target.value;
+    console.log(characterClass);
+    fetch(`https://www.dnd5eapi.co/api/backgrounds/${backgrounds}`)
+        .then((response)=>response.json())
+        .then(background=>{
+            console.log(background);
+            const myBackground = new CharacterClass(background.name);
+            console.log(myBackground);
+        })
+
 })
 infos.forEach((info)=>{
     info.addEventListener("click",(e)=>{
@@ -106,12 +168,12 @@ infos.forEach((info)=>{
                 infoTitle = "Información Atributo Fuerza"
                 infoText = "Mide la potencia física, entrenamiento atlético y situaciones en que se puede ejercer puro poderío físico.";
                 break;
-            case "attrDex":
-                infoTitle = "Información Atributo Destreza "
-                infoText = "Mide la agilidad, los reflejos y el equilibrio.";
-                break;
-            case "attrCon":
-                infoTitle = "Información Atributo Constitución "
+                case "attrDex":
+                    infoTitle = "Información Atributo Destreza "
+                    infoText = "Mide la agilidad, los reflejos y el equilibrio.";
+                    break;
+                    case "attrCon":
+                        infoTitle = "Información Atributo Constitución "
                 infoText = "Mide la salud, el aguante y el vigor.";
                 break;   
             case "attrInt":
@@ -134,54 +196,78 @@ infos.forEach((info)=>{
     })
 });
 
+attrsValue.forEach(attrValue=>{
+    attrValue.addEventListener("keyup",(e)=>{
+        let pjAttr= attrValue.getAttribute("pjAttr")
+        let modInput = attrValue.nextSibling;
+        myPj[pjAttr]=attrValue.value;
+        myPj.calcMod();
+        calcAttrsMod();
+        calcSavingThrowsMods();
+        CalcSkillsMod();
+    })
+    
+})
 
-fetch("https://www.dnd5eapi.co/api/races")
-    .then((response)=>response.json())
-    .then((races)=>{
-        races.results.forEach(race => {
-            let option = document.createElement("option")
-            option.value= race.index
-            option.innerText= race.name
-            
-            
-            characterRace.appendChild(option)
-            
-        });
+savingThrowsProf.forEach(savingThrowProf=>{
+    savingThrowProf.addEventListener("change",(e)=>{
+        let pjAttr = savingThrowProf.getAttribute("pjAttr");
+        myPj.savingThrows[pjAttr].prof = savingThrowProf.checked;
+        myPj.calcMod();
+       calcSavingThrowsMods();
     })
-fetch("https://www.dnd5eapi.co/api/classes")
-    .then((response)=>response.json())
-    .then((classes)=>{
-        classes.results.forEach(clase => {
-            let option = document.createElement("option")
-            option.value= clase.index
-            option.innerText= clase.name
-            
-            
-            characterClass.appendChild(option)
-            
-        });
+})
+skillsProf.forEach(skillProf=>{
+    skillProf.addEventListener("change",(e)=>{
+        let pjSkill = skillProf.getAttribute("pjSkill");
+        myPj.skills[pjSkill].prof = skillProf.checked;
+        myPj.calcMod();
+        CalcSkillsMod();   
     })
-fetch("https://www.dnd5eapi.co/api/backgrounds")
-    .then((response)=>response.json())
-    .then((backgrounds)=>{
-        backgrounds.results.forEach(trasfondo => {
-            let option = document.createElement("option")
-            option.value= trasfondo.index
-            option.innerText= trasfondo.name
-            
-            background.appendChild(option)
-            
-        });
+})
+
+experiencepoints.addEventListener("keyup",(e)=>{
+    myPj.exp=Number(experiencepoints.value);
+    myPj.calcProfBonByExp ();
+    proficiencyBonus.value = myPj.proficiencieBonus
+    lvl.value = myPj.lvl
+    myPj.calcMod();
+    calcSavingThrowsMods();
+    CalcSkillsMod(); 
+})
+lvl.addEventListener("change",(e)=>{
+    myPj.lvl=Number(lvl.value);
+    myPj.calcProfBonByLvl ();
+    proficiencyBonus.value = myPj.proficiencieBonus
+    experiencepoints.value = myPj.exp
+    myPj.calcMod();
+    calcSavingThrowsMods();
+    CalcSkillsMod();  
+})
+
+
+// funciones
+function calcAttrsMod() {
+    attrsMod.forEach(attrMod=>{
+        let pjAttr = attrMod.getAttribute("pjAttr")
+        attrMod.value = (myPj[pjAttr+"Mod"]>0) ? `+${myPj[pjAttr+"Mod"]}` : myPj[pjAttr+"Mod"];
     })
-fetch("https://www.dnd5eapi.co/api/alignments")
-    .then((response)=>response.json())
-    .then((alignments)=>{
-        alignments.results.forEach(alineamiento => {
-            let option = document.createElement("option")
-            option.value= alineamiento.index
-            option.innerText= alineamiento.name
-            
-            alignment.appendChild(option)
-            
-        });
+    
+}
+function calcSavingThrowsMods() {
+    savingThrowsValue.forEach(savingThrow=>{
+        let pjAttr = savingThrow.getAttribute("pjAttr");
+        savingThrow.value=(myPj.savingThrows[pjAttr].value>0) ? `+${myPj.savingThrows[pjAttr].value}` : myPj.savingThrows[pjAttr].value;
     })
+}
+function CalcSkillsMod() {
+    skillsValue.forEach(skillValue=>{
+        let pjSkill = skillValue.getAttribute("pjSkill");
+        skillValue.value=(myPj.skills[pjSkill].value>0) ? `+${myPj.skills[pjSkill].value}` : myPj.skills[pjSkill].value;
+    })
+}
+
+function rollDice(max) {
+    return 1 + Math.floor(Math.random() * max);
+  }
+  

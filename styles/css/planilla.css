@@ -274,7 +274,7 @@ body{
     order: 3;
   }
   form.charsheet main > section section.attributes div.attr-applications div.list-section ul li label span.skill {
-    color: #bbb;
+    color: rgb(22, 20, 20);
   }
   form.charsheet main > section section.attributes div.attr-applications div.list-section ul li input[type=text] {
     width: 30px;
@@ -637,4 +637,10 @@ body{
     border: 0;
     padding: 5px;
     height: 43em;
+  }
+  .info{
+    transition:transform 0.5s
+  }
+  .info:hover{
+    transform:scale(1.1);
   }
