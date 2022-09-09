@@ -42,7 +42,9 @@ let intModValue = document.querySelectorAll(".intModValue")
 let wisModValue = document.querySelectorAll(".wisModValue")
 let chaModValue = document.querySelectorAll(".chaModValue")
 
-
+let chatBox = document.getElementById("chatBox");
+let chatButton = document.getElementById("chatButton");
+let chatScreen = document.getElementById("chatScreen");
 // Fetch a la api del select
 
 fetch("https://www.dnd5eapi.co/api/races")
@@ -163,35 +165,42 @@ infos.forEach((info)=>{
     info.addEventListener("click",(e)=>{
         let infoTitle = "";
         let infoText = "";
+        let attrMod = 0
         switch (info.getAttribute("infoTarget")) {
             case "attrStr":
                 infoTitle = "Información Atributo Fuerza"
                 infoText = "Mide la potencia física, entrenamiento atlético y situaciones en que se puede ejercer puro poderío físico.";
+                attrMod = myPj.strMod
                 break;
-                case "attrDex":
-                    infoTitle = "Información Atributo Destreza "
-                    infoText = "Mide la agilidad, los reflejos y el equilibrio.";
-                    break;
-                    case "attrCon":
-                        infoTitle = "Información Atributo Constitución "
+            case "attrDex":
+                infoTitle = "Información Atributo Destreza "
+                infoText = "Mide la agilidad, los reflejos y el equilibrio.";
+                attrMod = myPj.dexMod
+                break;
+            case "attrCon":
+                infoTitle = "Información Atributo Constitución "
                 infoText = "Mide la salud, el aguante y el vigor.";
+                attrMod = myPj.conMod
                 break;   
             case "attrInt":
                 infoTitle = "Información Atributo Inteligencia"
                 infoText = "Mide la agudeza mental, la exactitud de los recuerdos y la capacidad de razonar.";
+                attrMod = myPj.intMod
                 break;
             case "attrWis":
                 infoTitle = "Información Atributo Sabiduria"
                 infoText = "Refleja que tan en sintonía estas con el mundo que te rodea y representa la perspicacia e intuición.";
+                attrMod = myPj.wisMod
                 break;
             case "attrCha":
                 infoTitle = "Información Atributo Carisma"
                 infoText = "Mide tu capacidad para interactuar de forma efectiva con otros. Incluye factores tales como la confianza y elocuencia, y puede representar una personalidad encantadora o imponente.";
+                attrMod = myPj.chaMod
                 break;
             }
         Swal.fire({
             title: infoTitle,
-            html: infoText,
+            html: `${infoText} <br> <button class="btn btn-danger" onclick="chatComand('/roll 1d20+${attrMod}');Swal.close()">Lanzar 1d20 </button>`,
         })                
     })
 });
@@ -245,6 +254,13 @@ lvl.addEventListener("change",(e)=>{
     CalcSkillsMod();  
 })
 
+chatButton.addEventListener("click",(e)=>{
+    ChatCtrl(e);
+
+})
+chatBox.addEventListener("keydown",(e)=>{
+    ChatCtrl(e);
+})
 
 // funciones
 function calcAttrsMod() {
@@ -269,5 +285,49 @@ function CalcSkillsMod() {
 
 function rollDice(max) {
     return 1 + Math.floor(Math.random() * max);
-  }
+}
   
+function ChatCtrl(e) {
+    if ((e.key == 'Enter' && e.type == "keydown")  || ( e.type == "click")) {
+        let chatValue = chatBox.value
+        if (chatValue.charAt(0) == "/") {
+            chatComand(chatValue);
+        } 
+        else{
+            chatScreen.innerText += chatValue+ "\n"
+            chatBox.value = ""
+            chatBox.focus();
+        }
+    }
+}
+function chatComand(comands) {
+    let comand = comands.split(" ") 
+ 
+    switch (comand[0]) {
+        case "/roll":
+            let diceParam = comand[1].split("+")
+            DiceType = diceParam[0].split("d")
+            diceParam.splice(0,1)
+            console.log(diceParam);
+
+            let results = []
+            for (let i = 0; i <DiceType[0] ; i++) {
+                let diceValue = rollDice(DiceType[1]);
+                results.push(diceValue);    
+            }
+            let calc = `${results.join("+")}`
+            let result = results.reduce((sum,x)=>sum+x,0)
+            diceParam.forEach(mod=>{
+                result += Number(mod)
+                calc += Number(mod)>0 ? `+${Number(mod)}` : `${Number(mod)}`
+            })
+            
+            
+            console.log(results);
+            chatScreen.innerText += `Tu tirada fue: \n ${calc}=${result}\n` 
+            chatBox.value = ""
+            chatBox.focus();
+            break;
+            
+    }
+}

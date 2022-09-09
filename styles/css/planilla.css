@@ -644,3 +644,27 @@ body{
   .info:hover{
     transform:scale(1.1);
   }
+  .chat{
+    background-color: rgb(152, 199, 221);
+    border: rgb(17, 17, 17);
+    width: 20%;
+  }
+  #chatScreen{
+    background-color: rgb(255, 255, 255);
+    border-radius: 2%;
+    margin-top: 10%;
+    width: 96%;
+    height: 70%;
+    margin-left: 2%;
+    margin-bottom: 5%;
+  }
+  #chatBox{
+    width: 80%;
+    height: auto  ;
+    margin-left: 2%;
+  }
+.chatButton{
+  margin-left: 3%;
+  border-radius: 15%;
+
+}
