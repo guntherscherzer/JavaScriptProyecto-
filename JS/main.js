@@ -266,7 +266,8 @@ chatBox.addEventListener("keydown",(e)=>{
 function calcAttrsMod() {
     attrsMod.forEach(attrMod=>{
         let pjAttr = attrMod.getAttribute("pjAttr")
-        attrMod.value = (myPj[pjAttr+"Mod"]>0) ? `+${myPj[pjAttr+"Mod"]}` : myPj[pjAttr+"Mod"];
+        attrMod.innerText = (Number(myPj[pjAttr+"Mod"])>0) ? `+${myPj[pjAttr+"Mod"]}` : myPj[pjAttr+"Mod"];
+        
     })
     
 }
